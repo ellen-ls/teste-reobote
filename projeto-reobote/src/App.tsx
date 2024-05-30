@@ -1,11 +1,14 @@
-import './App.css';
+import Login from "./Components/Login/Login"
+import Register from "./Components/Register"
 
 function App() {
  
 
   return (
   <div>
-    <h1 className='text-4xl font-bold'>Hello world</h1>
+  
+    <Login></Login>
+    <Register></Register>
     
   </div>
   )
