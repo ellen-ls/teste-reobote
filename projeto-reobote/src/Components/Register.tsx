@@ -31,7 +31,7 @@ function Register() {
 
 <div className='sm:flex justify-center items-center h-full'>
       <div className='lg:w-[450px] bg-white py-5 px-10 rounded-bl-[40px] rounded-se-[40px]'>
-        <form className='w-full' onSubmit={handleSubmit}>
+        <form className='w-full' >
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
             <IoPersonSharp className='text-[#f1a598] text-xl' />
             <input
@@ -75,11 +75,11 @@ function Register() {
               required
               placeholder='Confirme sua senha' />
           </div>
-          {error && <p>{error}</p>}
-          {success && <p>{success}</p>}
+          {error && <p className='text-red-800'>{error}</p>}
+          {success && <p className='text-green-700'>{success}</p>}
 
           <div className='flex justify-center gap-10 mt-10'>
-            <button className='bg-[#f1a598] text-white text-xl py-2 w-36 rounded-3xl' type="submit">Register</button>
+            <button className='bg-[#f1a598] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Register</button>
           </div>
         </form>
       </div>
