@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        "banner-imagem" : "url('./src/assets/banner-image.svg')",
+        "login-imagem" : "url('./src/assets/plano-de-fundo-login.png')"
+      }
+    },
   },
   plugins: [],
 }

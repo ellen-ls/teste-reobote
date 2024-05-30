@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+  font-family: "Salsa", cursive;
+}
+
+h1{
+  font-family: "Salsa", cursive;
+  font-weight: 700;
+   
+}
