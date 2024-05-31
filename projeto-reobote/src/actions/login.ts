@@ -9,7 +9,7 @@ const LoginSchema = z.object({
 });
 
 export const login = async (values: unknown) => {
-  console.log(values); // log on server (npm)
+  
 
   const validatedFields = LoginSchema.safeParse(values);
 

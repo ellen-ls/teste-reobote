@@ -12,8 +12,7 @@ const RegisterSchema = z.object({
 })
 
 export const register = async (values: unknown) => {
-    console.log(values); // log no servidor (npm)
-
+    
     const validatedFields = RegisterSchema.safeParse(values);
 
     if (!validatedFields.success) {

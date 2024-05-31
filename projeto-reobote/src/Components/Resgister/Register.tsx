@@ -3,6 +3,7 @@ import { register } from '../../actions/register';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoPersonSharp } from "react-icons/io5";
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 
 function Register() {
@@ -12,6 +13,18 @@ function Register() {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState('password');
+
+  const handleToggle = () => {
+    if (type === 'password') {
+      setIcon('text')
+      setType('text')
+    } else {
+      setIcon('password')
+      setType('password')
+    }
+  }
 
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
@@ -19,9 +32,6 @@ function Register() {
     setError('')
     e.preventDefault();
     const result = await register({ name, email, password, password_confirmation: passwordConfirmation });
-
-
-    console.log(result)
 
     if (result.error) {
       setError(result.error);
@@ -38,7 +48,7 @@ function Register() {
 
   return (
 
-<div className='sm:flex justify-center items-center h-full'>
+    <div className='sm:flex justify-center items-center h-full'>
       <div className='lg:w-[450px] bg-white py-5 px-10 rounded-bl-[40px] rounded-se-[40px]'>
         <form className='w-full' id='formReset' >
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
@@ -66,19 +76,22 @@ function Register() {
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />
             <input
               className='bg-transparent border-none outline-none'
-              type="password"
+              type={type}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder='Sua senha' />
+            <span className='flex justify-around items-center text-black' onClick={handleToggle}>
+              {icon === 'password' ? <IoMdEyeOff className='absolute mr-5 h-4 w-4' /> : <IoMdEye className='absolute mr-5 h-4 w-4' />}
+            </span>
           </div>
-           <p>A senha precisa ter no minimo 8 caracteres</p>
+          <p>A senha precisa ter no minimo 8 caracteres</p>
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
 
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />
             <input
-              className='bg-transparent border-none outline-none'
-              type="password"
+              className='flex-auto bg-transparent border-none outline-none'
+              type={type}
               value={passwordConfirmation}
               onChange={(e) => setPasswordConfirmation(e.target.value)}
               required
