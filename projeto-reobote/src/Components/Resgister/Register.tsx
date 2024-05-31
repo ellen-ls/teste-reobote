@@ -6,6 +6,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 
+
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,10 +36,10 @@ function Register() {
 
     if (result.error) {
       setError(result.error);
-      //setSuccess(null);
+      
     } else {
-      setSuccess('success');
-      //setError(null);
+      setSuccess('Cadastro realizado com sucesso!');
+      
       setName('')
       setEmail('')
       setPassword('')
@@ -85,7 +86,7 @@ function Register() {
               {icon === 'password' ? <IoMdEyeOff className='absolute mr-5 h-4 w-4' /> : <IoMdEye className='absolute mr-5 h-4 w-4' />}
             </span>
           </div>
-          <p>A senha precisa ter no minimo 8 caracteres</p>
+          <p className='text-sm text-gray-400'>A senha precisa ter no minimo 8 caracteres</p>
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
 
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />
@@ -97,11 +98,12 @@ function Register() {
               required
               placeholder='Confirme sua senha' />
           </div>
-          {error && <p className='text-red-800'>{error}</p>}
-          {success && <p className='text-green-700'>{success}</p>}
+          {error && <p className='text-red-600'>{error}</p>}
+          {success && <p className='font-medium text-green-700'>{success}</p>}
+
 
           <div className='flex justify-center gap-10 mt-10'>
-            <button className='bg-[#f1a598] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Register</button>
+            <button className='bg-[#f1a598] hover:bg-[#edcfc4] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Register</button>
           </div>
         </form>
       </div>

@@ -69,7 +69,7 @@ function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    placeholder='Seu email' />
+                    placeholder='Seu email'/>
                 </div>
                 <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
 
@@ -88,9 +88,9 @@ function Login() {
 
                   </div>
                   {error && <p className='text-red-700'>{error}</p>}
-                  <div><p>Esqueceu sua senha? <span className='text-yellow-500 cursor-pointer'>Clique aqui</span></p></div>
+                  <div><p>Esqueceu sua senha? <span className='text-yellow-500 cursor-pointer hover:text-yellow-300'>Clique aqui</span></p></div>
                   <div className='flex justify-center gap-10 mt-10'>
-                    <button className='bg-[#f1a598] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Entrar</button>
+                    <button className='bg-[#f1a598] hover:bg-[#edcfc4] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Entrar</button>
                   </div>
                 </>
                   : <Register />

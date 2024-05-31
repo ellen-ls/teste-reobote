@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { logout } from "../../actions/logout";
-import { useNavigate } from "react-router-dom";
 
+import Sidebar from './Sidebar'
+import Navbar from "./Navbar";
 
 interface User {
   id: number;
@@ -19,12 +19,13 @@ interface DashboardData {
 const Dashboard: React.FC=()=> {
  const [data, setData] = useState<DashboardData | null>(null);
  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+ const [sidebarToggle, setSidebarToggle] = useState<boolean>(false);
+
+ 
 
  useEffect(()=>{
   const fetchData = async () =>{
     try{
-      
      const token = localStorage.getItem('access_token')
      const tokenType = localStorage.getItem('token_type')
      const config = {
@@ -50,21 +51,26 @@ const Dashboard: React.FC=()=> {
  }
  
   return (
-    <div>
-    <h2>Aqui é o dashboard</h2>
-    <div >
-      <button className="bg-blue-400" onClick={()=> logout().then(()=>{navigate("/")}).catch((e)=>{return e})}>Logout</button>
-    </div>
-    <div>
-    <p>Number of users: {data.number_users}</p>
-            <p>Logged in as: {data.logged_user.email}</p>
-            <ul>
-                {data.users.map(user => (
-                    <li key={user.id}>{user.name} - {user.email}</li>
-                ))}
-            </ul>
-    </div>
-    </div>
+    
+   <div className={`w-full ${sidebarToggle? "mr-64" : ""} bg-gray-200`}>
+   <Sidebar sidebarToggle={sidebarToggle}/>
+   <Navbar 
+    sidebarToggle={sidebarToggle} 
+    setSidebarToggle={setSidebarToggle}
+    />
+   <p className="text-black">{data.logged_user.email}</p> 
+  <div >
+      <ul>
+         {data.users.map(user => (
+         <li key={user.id}>
+          <p>Nome: {user.name}</p> 
+          <p>Email: {user.email}</p>
+          </li>
+        ))}
+      </ul>
+      </div>
+   </div>
+
   )
 }
 
