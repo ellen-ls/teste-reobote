@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { login } from '../../actions/login';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import Register from '../Register';
+import Register from '../Resgister/Register';
 import { useNavigate } from 'react-router-dom';
 
 

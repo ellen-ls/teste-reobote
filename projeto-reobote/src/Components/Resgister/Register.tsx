@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { register } from '../actions/register';
+import { register } from '../../actions/register';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { IoPersonSharp } from "react-icons/io5";
