@@ -10,20 +10,29 @@ function Register() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [name, setName] = useState('');
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    setSuccess('')
+    setError('')
     e.preventDefault();
     const result = await register({ name, email, password, password_confirmation: passwordConfirmation });
 
+
+    console.log(result)
+
     if (result.error) {
       setError(result.error);
-      setSuccess(null);
+      //setSuccess(null);
     } else {
-      setSuccess(result.success);
-      setError(null);
+      setSuccess('success');
+      //setError(null);
+      setName('')
+      setEmail('')
+      setPassword('')
+      setPasswordConfirmation('')
     }
   };
 
@@ -31,7 +40,7 @@ function Register() {
 
 <div className='sm:flex justify-center items-center h-full'>
       <div className='lg:w-[450px] bg-white py-5 px-10 rounded-bl-[40px] rounded-se-[40px]'>
-        <form className='w-full' >
+        <form className='w-full' id='formReset' >
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
             <IoPersonSharp className='text-[#f1a598] text-xl' />
             <input
@@ -63,7 +72,7 @@ function Register() {
               required
               placeholder='Sua senha' />
           </div>
-
+           <p>A senha precisa ter no minimo 8 caracteres</p>
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
 
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />
