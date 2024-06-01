@@ -17,6 +17,7 @@ function Register() {
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState('password');
 
+  // Função para alternar entre mostrar/ocultar senha
   const handleToggle = () => {
     if (type === 'password') {
       setIcon('text')
@@ -27,11 +28,12 @@ function Register() {
     }
   }
 
-
+// Função para lidar com o submit do formulário
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     setSuccess('')
     setError('')
-    e.preventDefault();
+    e.preventDefault();// Previna o comportamento padrão do formulário (reload da página)
+    // Chama a função register com os dados do formulário
     const result = await register({ name, email, password, password_confirmation: passwordConfirmation });
 
     if (result.error) {
@@ -39,14 +41,14 @@ function Register() {
       
     } else {
       setSuccess('Cadastro realizado com sucesso!');
-      
+      // Reseta os campos do formulário
       setName('')
       setEmail('')
       setPassword('')
       setPasswordConfirmation('')
     }
   };
-
+// Renderiza o formulário de registro
   return (
 
     <div className='sm:flex justify-center items-center h-full'>
@@ -86,7 +88,7 @@ function Register() {
               {icon === 'password' ? <IoMdEyeOff className='absolute mr-5 h-4 w-4' /> : <IoMdEye className='absolute mr-5 h-4 w-4' />}
             </span>
           </div>
-          <p className='text-xs text-center -mt-3 text-gray-400'>A senha precisa ter no minimo 8 caracteres</p>
+          <p className='text-xs text-center -mt-3 text-gray-400'>A senha precisa ter no minimo 6 caracteres</p>
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
 
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />

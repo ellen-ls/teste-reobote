@@ -10,7 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
-
+// Estados locais para armazenar email, senha, mensagens de erro, ação atual (Login ou Registre-se), tipo de input (password ou text) e ícone (olho ou olho cortado)
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -19,6 +20,7 @@ function Login() {
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState('password');
 
+  // Função para alternar entre mostrar e ocultar a senha
   const handleToggle = () => {
     if (type==='password'){
        setIcon('text')
@@ -30,9 +32,9 @@ function Login() {
  }
   
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
+    e.preventDefault();// Previna o comportamento padrão do formulário (recarregar a página)
    
-    await login({ email, password })
+    await login({ email, password }) // Chama a função login com os dados de email e senha
     .then((response) => 
       { 
         window.localStorage.setItem("user", email)
@@ -40,7 +42,7 @@ function Login() {
         window.localStorage.setItem("token_type", response.token_type)
       })
       .then(()=>{
-        navigate("/dashboard")
+        navigate("/dashboard")// Navega para a página de dashboard em caso de sucesso
       })
       .catch((e) => { console.log('error', error); setError(e) });
   };
