@@ -1,17 +1,17 @@
 import { FaBars, FaUserCircle } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-import { logout } from '../../actions/logout'
 
 interface NavbarProps {
   sidebarToggle: boolean;
   setSidebarToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  logout: () => Promise<void>;
+  navigate: (path: string) => void;
+  loggedUserEmail: string;
 
 }
-const Navbar: React.FC<NavbarProps> = ({sidebarToggle, setSidebarToggle}) => {
-
-  const navigate = useNavigate()
+const Navbar: React.FC<NavbarProps> = ({sidebarToggle, setSidebarToggle, loggedUserEmail,logout,navigate}) => {
+  
   return (
-    
+   
       
       <nav className='bg-[#202124] px-4 py-3 flex justify-between'>
         <div className='flex items-center text-xl z-40'>
@@ -20,15 +20,16 @@ const Navbar: React.FC<NavbarProps> = ({sidebarToggle, setSidebarToggle}) => {
         </div>
         <div className='relative'>
           <button className='text-white group'>
-            <FaUserCircle className='w-6 h-6 mt-1' />
-            <div className='z-10 hidden absolute bg-white rounded-lg shadow w-32 group-focus:block top-full right-0'>
-              <ul className='py-2 text-sm text-gray-950'>
+          <button className="flex-auto bg-[#f1a598] w-20 py-1 ml-5 rounded-3xl" onClick={()=> logout().then(()=>{navigate("/")}).catch((e)=>{return e})}>Logout</button> 
+            <FaUserCircle className='w-10 h-12 ml-10 mt-2' />
+            
+         <div className='z-10 hidden absolute bg-white rounded-lg shadow w-36 group-focus:block top-full right-0'>
+          <ul className='py-2 text-sm text-gray-950'>
+                <li className='m-2'>{loggedUserEmail}</li>
                 <li><a href=''>Profile</a></li>
                 <li><a href=''>Setting</a></li>
-                <li>
-                  <button className="text-yellow-500" onClick={() => logout().then(() => { navigate("/") }).catch((e) => { return e })}>Logout</button>
-                </li>
-              </ul>
+         </ul>
+     
             </div>
           </button>
         </div>

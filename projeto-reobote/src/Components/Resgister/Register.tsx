@@ -86,7 +86,7 @@ function Register() {
               {icon === 'password' ? <IoMdEyeOff className='absolute mr-5 h-4 w-4' /> : <IoMdEye className='absolute mr-5 h-4 w-4' />}
             </span>
           </div>
-          <p className='text-sm text-gray-400'>A senha precisa ter no minimo 8 caracteres</p>
+          <p className='text-xs text-center -mt-3 text-gray-400'>A senha precisa ter no minimo 8 caracteres</p>
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
 
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />
@@ -98,8 +98,8 @@ function Register() {
               required
               placeholder='Confirme sua senha' />
           </div>
-          {error && <p className='text-red-600'>{error}</p>}
-          {success && <p className='font-medium text-green-700'>{success}</p>}
+          {error && <p className='font-medim text-red-600 bg-red-200 rounded-2xl text-center'>{error}</p>}
+          {success && <p className='font-medium text-green-700 bg-lime-100 rounded-2xl text-center'>{success}</p>}
 
 
           <div className='flex justify-center gap-10 mt-10'>

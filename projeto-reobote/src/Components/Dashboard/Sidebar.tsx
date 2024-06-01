@@ -10,7 +10,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({sidebarToggle}) => {
   return (
     <div className={`${sidebarToggle? 'block' : 'hidden'} w-64 bg-[#202124] fixed h-full px-4 py-2 `}>
-      <div className='my-14 mb-4'>
+      <div className='my-20 mb-4'>
         <h1 className='text-2x text-white font-bold'>Admin Dashboard</h1>
       </div>
       <hr />
