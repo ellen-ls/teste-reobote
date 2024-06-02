@@ -13,6 +13,7 @@ interface User {
   id: number;
   name: string;
   email: string;
+  created_at: string
 }
 // Define a interface DashboardData para tipagem dos dados do dashboard
 interface DashboardData {
@@ -78,33 +79,33 @@ const Dashboard: React.FC = () => {
 
       </div>
       <div className="sm:flex justify-center overflow-x-auto" >
-
-        <table className="table-auto border border-[#f1a598] bg-[#edcfc4] rounded-2xl ">
-          <thead>
+      
+           <table className="table-auto border border-[#f1a598] rounded-2xl ">
+            <thead>
             <tr>
-              <th className="border text-center bg-[#f1a598] rounded-tl-2xl ">Nome</th>
-              <th className="border text-center bg-[#f1a598] rounded-tr-2xl ">Email</th>
+            <th className="border text-center bg-[#f1a598]">Id</th>
+              <th className="border text-center bg-[#f1a598] ">Nome</th>
+              <th className="border text-center bg-[#f1a598]">Email</th>
+              <th className="border text-center bg-[#f1a598]">Criado em</th>
 
             </tr>
           </thead>
           <tbody>
-            {data.users.map((user, index) => (
-              index % 2 !== 0 ?
+            {data.users.map((user) => (
+             
                 <tr>
-                  <td className="bg-[#f1a598] text-gray-700 border text-center">{user.name}</td>
-                  <td className="bg-[#f1a598] text-gray-700 border text-center">{user.email}</td>
+                  <td className="hover:bg-[#f1a598] text-gray-700 border-2 border-b-[#f1a598] text-center">{user.id}</td>
+                  <td className="hover:bg-[#f1a598] text-gray-700 border-2 border-b-[#f1a598]  text-center">{user.name}</td>
+                  <td className="hover:bg-[#f1a598] text-gray-700 border-2 border-b-[#f1a598]  text-center">{user.email}</td>
+                  <td className="hover:bg-[#f1a598] text-gray-700 border-2 border-b-[#f1a598]  text-center">{user.created_at.slice(0,-17)}</td>
                 </tr>
-                :
-                <tr>
-                  <td className="bg-[#edcfc4] border text-center">{user.name}</td>
-                  <td className="bg-[#edcfc4] border text-center">{user.email}</td>
-                </tr>
+
             ))}
           </tbody>
+          
         </table>
+        </div>
       </div>
-
-    </div>
 
   )
 }
