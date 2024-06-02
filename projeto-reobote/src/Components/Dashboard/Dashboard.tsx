@@ -52,13 +52,14 @@ const Dashboard: React.FC = () => {
     }
     fetchData()// Chama a função fetchData
   }, []); // Dependência vazia indica que o efeito roda apenas uma vez, após a montagem do componente
+
  // Renderiza uma mensagem de carregamento enquanto os dados estão sendo buscados
   if (loading) {
-    return <div className="text-center text-3xl text-[#f1a598]"><p>Loading...</p></div>
+    return <div className="text-center text-3xl text-[#f1a598]"><p className="py-5">Loading...</p></div>
   }// Renderiza uma mensagem de não autorizado se os dados não foram carregados
   if (!data) {
     return <div className="flex flex-col justify-center items-center text-center">
-      <p className=" flex text-3xl text-red-600 p-5 gap-2"><FaSadCry className="text-3xl text-red-600" /> Não autorizado</p>
+      <p className=" flex text-3xl text-red-600 py-5 gap-2"><FaSadCry className="text-3xl text-red-600" /> Não autorizado</p>
       <button className='bg-[#f1a598] hover:bg-[#edcfc4] text-white text-xl py-2 w-36 rounded-3xl' onClick={() => navigate('/')}>Voltar</button>
     </div>
   }
