@@ -74,17 +74,17 @@ function Register() {
               required
               placeholder='Seu email' />
           </div>
-          <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
+          <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded relative'>
 
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />
             <input
-              className='bg-transparent border-none outline-none'
+              className='bg-transparent border-none outline-none flex-1'
               type={type}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder='Sua senha' />
-            <span className='flex justify-around items-center text-black' onClick={handleToggle}>
+            <span className='flex justify-end items-center cursor-pointer text-black' onClick={handleToggle}>
               {icon === 'password' ? <IoMdEyeOff className='absolute h-4 w-4' /> : <IoMdEye className='absolute h-4 w-4' />}
             </span>
           </div>
@@ -105,7 +105,7 @@ function Register() {
 
 
           <div className='flex justify-center gap-10 mt-10'>
-            <button className='bg-[#f1a598] hover:bg-[#edcfc4] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Register</button>
+            <button className='bg-[#f1a598] hover:bg-[#edcfc4] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Registrar</button>
           </div>
         </form>
       </div>

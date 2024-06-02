@@ -51,11 +51,11 @@ function Login() {
 
     <div className='bg-banner-imagem bg-cover h-full'>
 
-      <div className='sm:flex justify-center items-center h-full'>
+      <div className='sm:flex justify-center items-center h-full py-10'>
         <div className='lg:w-[450px] bg-white rounded-bl-[40px] rounded-se-[40px]'>
           <div className='flex'>
-            <button className={`text-white text-xl py-2 w-1/2 ${action === 'Registre-se' ? 'bg-[#f1a598] drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]' : 'bg-[#edcfc4]'}`} type="submit" onClick={() => setAction('Registre-se')}>Registre-se</button>
-            <button className={`text-white text-xl py-2 w-1/2 ${action === 'Login' ? 'bg-[#f1a598] rounded-se-[40px] drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]' : 'bg-[#edcfc4] rounded-se-[40px] '}`} type="submit" onClick={() => setAction('Login')}>Login</button>
+            <button className={`text-white text-xl py-2 w-1/2 ${action === 'Registre-se' ? 'bg-yellow-500 drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]' : 'bg-[#f1a598]'}`} type="submit" onClick={() => setAction('Registre-se')}>Registre-se</button>
+            <button className={`text-white text-xl py-2 w-1/2 ${action === 'Login' ? 'bg-yellow-500 rounded-se-[40px] drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]' : 'bg-[#f1a598] rounded-se-[40px] '}`} type="submit" onClick={() => setAction('Login')}>Login</button>
           </div>
           <div className='pb-5 px-10'>
             <div className='bg-login-imagem bg-contain bg-center bg-no-repeat h-60'></div>
@@ -74,18 +74,18 @@ function Login() {
                     required
                     placeholder='Seu email'/>
                 </div>
-                <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
+                <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded relative'>
 
                     <RiLockPasswordFill className='text-[#f1a598] text-xl' />
                     <input
-                      className='bg-transparent border-none outline-none'
+                      className='bg-transparent border-none outline-none flex-1'
                       type={type}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       placeholder='Sua senha'
                       />
-                       <span className='flex justify-around items-center text-black' onClick={handleToggle}>
+                       <span className='flex justify-around items-center cursor-pointer text-black' onClick={handleToggle}>
                         {icon==='password' ? <IoMdEyeOff className='absolute h-4 w-4'/> : <IoMdEye  className='absolute h-4 w-4'/>}
                        </span>
 
