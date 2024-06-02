@@ -16,10 +16,10 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [action, setAction] = useState('Registre-se')
-  const navigate = useNavigate()
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState('password');
-
+  
+  const navigate = useNavigate()
   // Função para alternar entre mostrar e ocultar a senha
   const handleToggle = () => {
     if (type==='password'){
@@ -51,7 +51,7 @@ function Login() {
 
     <div className='bg-banner-imagem bg-cover h-full'>
 
-      <div className='sm:flex justify-center items-center sm:py-5 h-full'>
+      <div className='sm:flex justify-center items-center h-full'>
         <div className='lg:w-[450px] bg-white rounded-bl-[40px] rounded-se-[40px]'>
           <div className='flex'>
             <button className={`text-white text-xl py-2 w-1/2 ${action === 'Registre-se' ? 'bg-[#f1a598] drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]' : 'bg-[#edcfc4]'}`} type="submit" onClick={() => setAction('Registre-se')}>Registre-se</button>
@@ -60,9 +60,10 @@ function Login() {
           <div className='pb-5 px-10'>
             <div className='bg-login-imagem bg-contain bg-center bg-no-repeat h-60'></div>
             <h1 className='text-3xl text-[#f1a598] text-center mb-6 mt-6 transition-all'>{action}</h1>
-            <form className='w-full'>
+           
               {
-                action === 'Login' ? <>
+                action === 'Login' ? ( 
+                <form className='w-full'>
                 <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
                   <MdEmail className='text-[#f1a598] text-xl' />
                   <input
@@ -77,7 +78,7 @@ function Login() {
 
                     <RiLockPasswordFill className='text-[#f1a598] text-xl' />
                     <input
-                      className='flex-auto bg-transparent border-none outline-none'
+                      className='bg-transparent border-none outline-none'
                       type={type}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -85,7 +86,7 @@ function Login() {
                       placeholder='Sua senha'
                       />
                        <span className='flex justify-around items-center text-black' onClick={handleToggle}>
-                        {icon==='password' ? <IoMdEyeOff className=' mr-5 ml-auto h-4 w-4'/> : <IoMdEye  className=' mr-5 ml-auto h-4 w-4'/>}
+                        {icon==='password' ? <IoMdEyeOff className='absolute h-4 w-4'/> : <IoMdEye  className='absolute h-4 w-4'/>}
                        </span>
 
                   </div>
@@ -94,10 +95,11 @@ function Login() {
                   <div className='flex justify-center gap-10 mt-10'>
                     <button className='bg-[#f1a598] hover:bg-[#edcfc4] text-white text-xl py-2 w-36 rounded-3xl' onClick={handleSubmit} type="submit">Entrar</button>
                   </div>
-                </>
-                  : <Register />
-              }
+               
+              
             </form>
+              ): (<Register />
+          )}
           </div>
         </div>
       </div>

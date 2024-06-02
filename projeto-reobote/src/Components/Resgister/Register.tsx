@@ -52,8 +52,8 @@ function Register() {
   return (
 
     <div className='sm:flex justify-center items-center h-full'>
-      <div className='lg:w-[450px] bg-white py-5 px-10 rounded-bl-[40px] rounded-se-[40px]'>
-        <form className='w-full' id='formReset' >
+      <div className='lg:w-[450px] bg-white rounded-bl-[40px] rounded-se-[40px]'>
+        <form className='w-full'>
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
             <IoPersonSharp className='text-[#f1a598] text-xl' />
             <input
@@ -85,10 +85,10 @@ function Register() {
               required
               placeholder='Sua senha' />
             <span className='flex justify-around items-center text-black' onClick={handleToggle}>
-              {icon === 'password' ? <IoMdEyeOff className='absolute mr-5 h-4 w-4' /> : <IoMdEye className='absolute mr-5 h-4 w-4' />}
+              {icon === 'password' ? <IoMdEyeOff className='absolute h-4 w-4' /> : <IoMdEye className='absolute h-4 w-4' />}
             </span>
           </div>
-          <p className='text-xs text-center -mt-3 text-gray-400'>A senha precisa ter no minimo 6 caracteres</p>
+          <p className='text-xs text-center -mt-3 text-gray-400'>A senha precisa ter no minimo 8 caracteres</p>
           <div className='bg-[#edcfc4] flex items-center gap-5 my-4 p-4 rounded'>
 
             <RiLockPasswordFill className='text-[#f1a598] text-xl' />
